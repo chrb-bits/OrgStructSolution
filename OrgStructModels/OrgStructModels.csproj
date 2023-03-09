@@ -48,6 +48,7 @@
     <Compile Include="Persistables\PositionModel.cs" />
     <Compile Include="Persistence\APersistorBase.cs" />
     <Compile Include="Persistence\IPersistable.cs" />
+    <Compile Include="Persistence\IPersistorOperations.cs" />
     <Compile Include="Persistence\PersistableReferenceResolver.cs" />
     <Compile Include="Persistence\IPersistence.cs" />
     <Compile Include="Persistence\IPersistor.cs" />

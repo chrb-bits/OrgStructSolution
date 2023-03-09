@@ -19,12 +19,12 @@ namespace OrgStructModels.Persistence
         /// <summary>
         /// Set to true by the Persistable when a property of this Persistable has changed.
         /// </summary>
-        bool IsDirty { set; get; }
+        bool IsDirty { get; }
 
         /// <summary>
         /// True indicates that this Persistable exists in persistent storage.
         /// </summary>
-        bool IsPersistent { set; get; }
+        bool IsPersistent { get; }
 
         /// <summary>
         /// Timestamp (UTC) of last change to this Persistable.

@@ -8,7 +8,7 @@ namespace OrgStructModels.Persistables
 {
     [Serializable]
     [JsonObject(MemberSerialization.OptIn)]
-    public abstract class APersistableBase : IPersistable,  INotifyPropertyChanged
+    public abstract class APersistableBase : IPersistable, INotifyPropertyChanged, IPersistorOperations
     {
         #region Constructors
         public APersistableBase()
@@ -73,13 +73,14 @@ namespace OrgStructModels.Persistables
 
         /// <summary>
         /// Set to true by the Persistable when a property of this Persistable has changed.
+        /// Set to false by Persistor when the Persistable is written to persistent storage.
         /// </summary>
-        public bool IsDirty { set; get; }
+        public bool IsDirty { private set; get; }
         
         /// <summary>
         /// True indicates that this Persistable exists in persistent storage.
         /// </summary>
-        public bool IsPersistent { set; get; }
+        public bool IsPersistent { private set; get; }
 
         /// <summary>
         /// Copies data from this Persistable into a target Persistable, preserving the target Persistable's objectID.
@@ -153,6 +154,16 @@ namespace OrgStructModels.Persistables
             IsDirty = true;
             ChangedAtUTC = DateTime.UtcNow;
             OnPropertyChangedByName(string.Empty);
+        }
+
+        void IPersistorOperations.SetIsDirty(bool setting)
+        {
+            IsDirty = setting;
+        }
+
+        void IPersistorOperations.SetIsPersistent(bool setting)
+        {
+            IsPersistent = setting;
         }
         #endregion
     }

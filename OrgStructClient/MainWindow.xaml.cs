@@ -377,7 +377,6 @@ namespace OrgStructClient
                 {
                     // write changes to server
                     Program.ConnectionMgr.PositionWrite(CurrentEditorPositionLockId, CurrentEditorPosition);
-                    CurrentEditorPosition.IsDirty = false;
 
                     // stop editing
                     PositionEditorEditEnd();

@@ -18,5 +18,15 @@
         public abstract void Write(T persistable);
 
         public abstract void Delete(T persistable);
+
+        protected void SetIsDirty(IPersistable persistable, bool setting)
+        {
+            ((IPersistorOperations)persistable).SetIsDirty(setting);
+        }
+
+        protected void SetIsPersistent(IPersistable persistable, bool setting)
+        {
+            ((IPersistorOperations)persistable).SetIsPersistent(setting);
+        }
     }
 }

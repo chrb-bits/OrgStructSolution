@@ -28,11 +28,13 @@ namespace OrgStructPersistence.Persistors
             {
                 if (isPersistent != null)
                 {
-                    role.IsPersistent = isPersistent ?? default(bool);
+                    //role.IsPersistent = isPersistent ?? default(bool);
+                    SetIsPersistent(role, isPersistent ?? default);
                 }
                 if (isDirty != null)
                 {
-                    role.IsDirty = isDirty ?? default(bool);
+                    //role.IsDirty = isDirty ?? default(bool);
+                    SetIsDirty(role, isDirty ?? default);
                 }
             }
 
@@ -40,11 +42,13 @@ namespace OrgStructPersistence.Persistors
             {
                 if (isPersistent != null)
                 {
-                    person.IsPersistent = isPersistent ?? default(bool);
+                    //person.IsPersistent = isPersistent ?? default(bool);
+                    SetIsPersistent(person, isPersistent ?? default);
                 }
                 if (isDirty != null)
                 {
-                    person.IsDirty = isDirty ?? default(bool);
+                    //person.IsDirty = isDirty ?? default(bool);
+                    SetIsDirty(person, isDirty ?? default);
                 }
             }
             
@@ -58,8 +62,8 @@ namespace OrgStructPersistence.Persistors
         {
             foreach (PositionModel directReport in position.DirectReports)
             {
-                if (isPersistent != null) { directReport.IsPersistent = isPersistent ?? default; }
-                if (isDirty != null) { directReport.IsDirty = isDirty ?? default; }
+                if (isPersistent != null) { SetIsPersistent(directReport, isPersistent ?? default); } //  directReport.IsPersistent = isPersistent ?? default; }
+                if (isDirty != null) { SetIsDirty(directReport, isPersistent ?? default); } // directReport.IsDirty = isDirty ?? default; }
                 SetPersistenceFlags(directReport, isPersistent, isDirty);
             }
         }
