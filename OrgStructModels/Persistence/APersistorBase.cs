@@ -13,7 +13,7 @@
         }
         #endregion
 
-        #region Protected Vars and Methods
+        #region Protected Stuff
         /// <summary>
         /// Reference to persistence layer.
         /// </summary>

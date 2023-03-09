@@ -124,12 +124,16 @@ namespace OrgStructPersistence.Persistors
 
         public override void Delete(OrganizationModel persistable)
         {
+            // TODO: doesn't work anymore, but it's never used anyways.
+            throw new NotImplementedException("OrganizationModelPersistor.Delete() not currently implemented.");
+            
             string jsonFilePath = ((PersistenceLayer)persistence).PersistenceFilePath;
             if (File.Exists(jsonFilePath))
             {
                 File.Delete(jsonFilePath);
             }
 
+            // update persistence flags
             SetPersistenceFlags(persistable, false, null);
         }
         #endregion

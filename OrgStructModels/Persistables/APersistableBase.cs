@@ -37,9 +37,7 @@ namespace OrgStructModels.Persistables
         #region Protected
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
-            ChangedAtUTC = DateTime.UtcNow;
-            IsDirty = true;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            OnPropertyChangedByName(name);
         }
 
         protected void OnPropertyChangedByName(string propertyName)
