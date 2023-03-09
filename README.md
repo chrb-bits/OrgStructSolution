@@ -38,7 +38,7 @@
 ---
 ![alt text](https://i.imgur.com/bKQRFLI.png)
 ---
-![alt text](https://i.imgur.com/wSQXfbP.png)
+![alt text](https://i.imgur.com/Bn69V4h.png)
 ---
 ![alt text](https://i.imgur.com/aqacIVI.png)
 ---
