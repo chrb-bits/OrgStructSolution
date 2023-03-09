@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OrgStructModels.Persistence
+﻿namespace OrgStructModels.Persistence
 {
     /// <summary>
-    /// Interface for internal Persistor operations on Persistables.
+    /// Internal interface for Persistor restricted operations on Persistables.
     /// </summary>
     internal interface IPersistablePersistorOperations
     {
