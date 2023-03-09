@@ -83,7 +83,6 @@ namespace OrgStructModels.Persistables
 
         /// <summary>
         /// Copies data from this Persistable into a target Persistable, preserving the target Persistable's objectID.
-        /// 
         /// </summary>
         /// <typeparam name="P">Persistable type derived from IPersistable.</typeparam>
         /// <param name="target">The target Persistable to copy data into.</param>
@@ -92,13 +91,13 @@ namespace OrgStructModels.Persistables
             Guid localID = ObjectID;
             Guid targetID = target.ObjectID;
 
-            // deserialize local
+            // serialize local
             string json = JsonConvert.SerializeObject(this, Formatting.None, new JsonSerializerSettings { ReferenceResolverProvider = () => new PersistableReferenceResolver() });
             
             // magic
             json = json.Replace(localID.ToString(), targetID.ToString());
             
-            // serialize into target
+            // deserialize into target
             JsonConvert.PopulateObject(json, target, new JsonSerializerSettings { ObjectCreationHandling = ObjectCreationHandling.Replace, ReferenceResolverProvider = () => new PersistableReferenceResolver() });
 
             // verify magic
@@ -118,13 +117,13 @@ namespace OrgStructModels.Persistables
             Guid localID = ObjectID;
             Guid sourceID = source.ObjectID;
 
-            // deserialize source
+            // serialize source
             string json = JsonConvert.SerializeObject(source, Formatting.None, new JsonSerializerSettings { ReferenceResolverProvider = () => new PersistableReferenceResolver() });
 
             // magic
             json = json.Replace(sourceID.ToString(), localID.ToString());
 
-            // serialize into local
+            // deserialize into local
             JsonConvert.PopulateObject(json, this, new JsonSerializerSettings { ObjectCreationHandling = ObjectCreationHandling.Replace, ReferenceResolverProvider = () => new PersistableReferenceResolver() });
 
             // verify magic
