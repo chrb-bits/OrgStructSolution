@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8C1AF9E5-4DD5-4E31-878C-79774C698FE9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OrgStructModels</RootNamespace>
+    <AssemblyName>OrgStructModels</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Persistables\OrganizationModel.cs" />
+    <Compile Include="Persistables\PositionModel.cs" />
+    <Compile Include="Persistence\APersistorBase.cs" />
+    <Compile Include="Persistence\IPersistable.cs" />
+    <Compile Include="Persistence\PersistableReferenceResolver.cs" />
+    <Compile Include="Persistence\IPersistence.cs" />
+    <Compile Include="Persistence\IPersistor.cs" />
+    <Compile Include="Persistables\APersistableBase.cs" />
+    <Compile Include="Persistables\PersonModel.cs" />
+    <Compile Include="Metadata\LogEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Persistables\RoleModel.cs" />
+    <Compile Include="Protocol\ARequestBase.cs" />
+    <Compile Include="Protocol\AResultBase.cs" />
+    <Compile Include="Protocol\IRequest.cs" />
+    <Compile Include="Protocol\IResult.cs" />
+    <Compile Include="Protocol\LockRequest.cs" />
+    <Compile Include="Protocol\LockResult.cs" />
+    <Compile Include="Metadata\ObjectLock.cs" />
+    <Compile Include="Protocol\OrganizationRequest.cs" />
+    <Compile Include="Protocol\OrganizationResult.cs" />
+    <Compile Include="Protocol\PersonRequest.cs" />
+    <Compile Include="Protocol\PersonResult.cs" />
+    <Compile Include="Protocol\PositionRequest.cs" />
+    <Compile Include="Protocol\PositionResult.cs" />
+    <Compile Include="Protocol\RoleRequest.cs" />
+    <Compile Include="Protocol\RoleResult.cs" />
+    <Compile Include="Protocol\UpdatesRequest.cs" />
+    <Compile Include="Protocol\UpdatesResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

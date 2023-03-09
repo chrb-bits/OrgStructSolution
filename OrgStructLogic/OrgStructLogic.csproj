@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AC89BAEE-55B5-42F8-8E2D-2BE647FB2855}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OrgStructLogic</RootNamespace>
+    <AssemblyName>OrgStructLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\ConfigurationRepository.cs" />
+    <Compile Include="RequestProcessing\ARequestProcessorBase.cs" />
+    <Compile Include="ObjectManagement\ObjectLockManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestProcessing\IRequestProcessor.cs" />
+    <Compile Include="RequestProcessing\LockAcquireRequestProcessor.cs" />
+    <Compile Include="RequestProcessing\LockReleaseAllRequestProcessor.cs" />
+    <Compile Include="RequestProcessing\LockReleaseRequestProcessor.cs" />
+    <Compile Include="RequestProcessing\OrganizationReadRequestProcessor.cs" />
+    <Compile Include="RequestProcessing\PersonDeleteRequestProcessor.cs" />
+    <Compile Include="RequestProcessing\PersonReadRequestProcessor.cs" />
+    <Compile Include="RequestProcessing\PersonWriteRequestProcessor.cs" />
+    <Compile Include="RequestProcessing\PositionDeleteRequestProcessor.cs" />
+    <Compile Include="RequestProcessing\PositionWriteRequestProcessor.cs" />
+    <Compile Include="RequestProcessing\RoleDeleteRequestProcessor.cs" />
+    <Compile Include="RequestProcessing\RoleWriteRequestProcessor.cs" />
+    <Compile Include="RequestProcessing\UpdatesReadRequestProcessor.cs" />
+    <Compile Include="ObjectManagement\UnUpdateableChangesTracker.cs" />
+    <Compile Include="Service\Facilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrgStructModels\OrgStructModels.csproj">
+      <Project>{8c1af9e5-4dd5-4e31-878c-79774c698fe9}</Project>
+      <Name>OrgStructModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrgStructPersistence\OrgStructPersistenceJSON.csproj">
+      <Project>{5b178c42-c6e5-40c1-a6ef-4efd05fa7f62}</Project>
+      <Name>OrgStructPersistenceJSON</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,8 @@
+C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructModels\bin\Debug\OrgStructModels.dll
+C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructModels\bin\Debug\OrgStructModels.pdb
+C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructModels\bin\Debug\Newtonsoft.Json.dll
+C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructModels\bin\Debug\Newtonsoft.Json.xml
+C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructModels\obj\Debug\OrgStructModels.csproj.CoreCompileInputs.cache
+C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructModels\obj\Debug\OrgStructModels.csproj.CopyComplete
+C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructModels\obj\Debug\OrgStructModels.dll
+C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructModels\obj\Debug\OrgStructModels.pdb
