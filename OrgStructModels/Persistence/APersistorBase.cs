@@ -3,7 +3,7 @@
     /// <summary>
     /// Abstract base class for IPersistable persistors.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Persistable type derived from IPersistable.</typeparam>
     public abstract class APersistorBase<T> : IPersistor<T> where T:IPersistable 
     {
         #region ctor
