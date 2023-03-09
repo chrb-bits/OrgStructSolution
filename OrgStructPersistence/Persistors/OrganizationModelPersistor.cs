@@ -77,7 +77,12 @@ namespace OrgStructPersistence.Persistors
             return false;
         }
 
-        public override OrganizationModel Read(string key = "")
+        /// <summary>
+        /// Read OrganizationModel instance from JSON persistence file.
+        /// </summary>
+        /// <param name="objectID">Ignored for OrgStructPersistenceJSON.</param>
+        /// <returns></returns>
+        public override OrganizationModel Read(Guid objectID = default)
         {
             // only works if we can read from the JSON persistence stream
             if (!((PersistenceLayer)persistence).PersistenceFileStream.CanRead) { throw Ex_CantRead; }
@@ -100,6 +105,10 @@ namespace OrgStructPersistence.Persistors
             }
         }
 
+        /// <summary>
+        /// Write OrganizationModel instance to JSON persistence file.
+        /// </summary>
+        /// <param name="persistable">The OrganizationModel instance to write.</param>
         public override void Write(OrganizationModel persistable)
         {
             // only works if we can write to the JSON persistence file stream

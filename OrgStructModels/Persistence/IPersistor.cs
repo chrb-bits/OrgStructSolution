@@ -1,11 +1,13 @@
-﻿namespace OrgStructModels.Persistence
+﻿using System;
+
+namespace OrgStructModels.Persistence
 {
     // a variant generic interface for IPersistable persistors
     public interface IPersistor<T>
         where T : IPersistable
     {   
         // read persistable from persistent storage
-        T Read(string key = "");
+        T Read(Guid objectID = default);
 
         // write persistable to persistent storage
         void Write(T persistable);

@@ -1,4 +1,6 @@
-﻿namespace OrgStructModels.Persistence
+﻿using System;
+
+namespace OrgStructModels.Persistence
 {
     /// <summary>
     /// Abstract base class for IPersistable persistors.
@@ -48,7 +50,7 @@
         /// </summary>
         /// <param name="key">Access key or object ID of the persistable to read.</param>
         /// <returns>The Persistable instance as read from persistent storage.</returns>
-        public abstract T Read(string key = "");
+        public abstract T Read(Guid objectID = default);
 
         /// <summary>
         /// Writes a Persistable to persistent storage.
