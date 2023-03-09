@@ -8,7 +8,7 @@ namespace OrgStructModels.Persistables
 {
     [Serializable]
     [JsonObject(MemberSerialization.OptIn)]
-    public abstract class APersistableBase : IPersistable, INotifyPropertyChanged, IPersistorOperations
+    public abstract class APersistableBase : IPersistable, INotifyPropertyChanged, IPersistablePersistorOperations
     {
         #region Constructors
         public APersistableBase()
@@ -156,12 +156,20 @@ namespace OrgStructModels.Persistables
             OnPropertyChangedByName(string.Empty);
         }
 
-        void IPersistorOperations.SetIsDirty(bool setting)
+        /// <summary>
+        /// Set this Persistable's IsDirty flag.
+        /// </summary>
+        /// <param name="setting">Value to set the flag to.</param>
+        void IPersistablePersistorOperations.SetIsDirty(bool setting)
         {
             IsDirty = setting;
         }
 
-        void IPersistorOperations.SetIsPersistent(bool setting)
+        /// <summary>
+        /// Set this Persistabe's IsPersistent flag.
+        /// </summary>
+        /// <param name="setting">Value to set the flag to.</param>
+        void IPersistablePersistorOperations.SetIsPersistent(bool setting)
         {
             IsPersistent = setting;
         }
