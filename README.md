@@ -24,7 +24,7 @@
 ---
 ![alt text](https://i.imgur.com/aqoePdc.png)
 ---
-![alt text](https://i.imgur.com/U6ugohM.png)
+![alt text](https://i.imgur.com/83aItCe.png)
 ---
 ![alt text](https://i.imgur.com/JlPQT29.png)
 ---
