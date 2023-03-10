@@ -87,6 +87,9 @@ namespace OrgStructLogic.Service
 
                         Log("Object lock manager initialized.");
 
+                        // configure object lock timeout
+                        ObjectLocks.LockTimeout = Configuration.Service.ObjectLockTimeout;
+
                         // track deletes
                         UnUpdateables = new UnUpdateableChangesTracker();
                         if (UnUpdateables != null)

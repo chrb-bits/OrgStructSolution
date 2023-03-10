@@ -14,6 +14,8 @@ namespace OrgStructLogic.ObjectManagement
         // our list of object locks
         private List<ObjectLock> objectLocks;
 
+        private TimeSpan lockTimeout;
+
         private UnauthorizedAccessException Ex_Unauthorized = new UnauthorizedAccessException("Lock is invalid.");
         #endregion
 
@@ -21,6 +23,7 @@ namespace OrgStructLogic.ObjectManagement
         public ObjectLockManager()
         {
             objectLocks = new List<ObjectLock>();
+            LockTimeout = new TimeSpan(0, 1, 0);        // default
         }        
 
         ~ObjectLockManager()
@@ -39,6 +42,16 @@ namespace OrgStructLogic.ObjectManagement
 
         #region Interface
         public event EventHandler<LogEventArgs> LogEvent;
+
+        public TimeSpan LockTimeout
+        {
+            set
+            {
+                lockTimeout = value;
+                Log("Object lock timeout set to (" + lockTimeout.ToString() + ").");
+            }
+            get => lockTimeout; 
+        }
 
         public void Validate(Guid sessionID, Guid targetID, Guid lockID)
         {          
@@ -84,7 +97,7 @@ namespace OrgStructLogic.ObjectManagement
                     TimeSpan lockDuration = DateTime.UtcNow.Subtract(existingLock.LockAcquiredAtUTC);
                     
                     // lock expired?
-                    if (lockDuration.TotalSeconds > Facilities.Configuration.Service.ObjectLockTimeout.TotalSeconds)
+                    if (lockDuration.TotalSeconds > LockTimeout.TotalSeconds)
                     {
                         // existing lock timed out - acquire for current session
                         existingLock.Acquire(sessionID, objectID);
@@ -194,7 +207,7 @@ namespace OrgStructLogic.ObjectManagement
                 TimeSpan lockDuration = DateTime.UtcNow.Subtract(existingLock.LockAcquiredAtUTC);
 
                 // expired?
-                if (lockDuration.TotalSeconds > Facilities.Configuration.Service.ObjectLockTimeout.TotalSeconds)
+                if (lockDuration.TotalSeconds > LockTimeout.TotalSeconds)
                 {
                     // yup, add to purge list
                     expiredLocks.Add(existingLock);
