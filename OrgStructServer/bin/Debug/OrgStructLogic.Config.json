@@ -1,0 +1,12 @@
+{
+  "Service": {
+    "ServiceURL": "http://localhost:9000/",
+    "ObjectLockTimeout": "00:01:00"
+  },
+  "Persistence": {
+    "DefaultOrganizationName": "Default Organization",
+    "DataSource": "Default Organization.json",
+    "SyncDelayMilliseconds": 500,
+    "SyncMaxDeferredChanges": 20
+  }
+}
