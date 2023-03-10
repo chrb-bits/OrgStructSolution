@@ -3,17 +3,15 @@ using System.Security.Cryptography;
 
 namespace OrgStructModels.Metadata
 {
+    /// <summary>
+    /// Object lock descriptor class.
+    /// </summary>
     public class ObjectLock
     {
         #region Constructors
         public ObjectLock()
         {
-            LockID = new Guid();
-        }
-
-        public ObjectLock(Guid lockID)
-        {
-            LockID = lockID;
+            LockID = Guid.Empty;
         }
         #endregion
 
@@ -38,7 +36,11 @@ namespace OrgStructModels.Metadata
         #endregion
 
         #region Interface
-        // acquire new lock for session
+        /// <summary>
+        /// Acquire this lock on target object for session.
+        /// </summary>
+        /// <param name="sessionID">ID of the session to acquire the lock for.</param>
+        /// <param name="targetObjectID">ID of the target object to acquire the lock for.</param>
         public void Acquire(Guid sessionID, Guid targetObjectID)
         {
             LockID = CreateSecureGUID();
@@ -47,7 +49,10 @@ namespace OrgStructModels.Metadata
             LockAcquiredAtUTC = DateTime.UtcNow;
         }
 
-        // refresh lock for session
+        /// <summary>
+        /// Refresh this lock for session.
+        /// </summary>
+        /// <param name="sessionID">ID of the session to refresh this lock for.</param>
         public void Refresh(Guid sessionID)
         {
             if (sessionID == SessionID)

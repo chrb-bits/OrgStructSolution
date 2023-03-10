@@ -45,7 +45,6 @@ namespace OrgStructLogic.ObjectManagement
             if (lockID != Guid.Empty)
             {
                 // find lock by ID and validate
-                //ObjectLock existingLock = objectLocks.Where(x => x.LockID == lockID).FirstOrDefault();
                 ObjectLock existingLock = objectLocks.Where(l => l.LockID == lockID).FirstOrDefault();
                 if (existingLock != null)
                 {
