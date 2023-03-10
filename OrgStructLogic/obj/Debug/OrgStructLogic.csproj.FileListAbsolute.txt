@@ -1,8 +1,8 @@
 C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructLogic\bin\Debug\OrgStructLogic.dll
 C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructLogic\bin\Debug\OrgStructLogic.pdb
+C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructLogic\bin\Debug\Newtonsoft.Json.dll
 C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructLogic\bin\Debug\OrgStructModels.dll
 C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructLogic\bin\Debug\OrgStructPersistenceJSON.dll
-C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructLogic\bin\Debug\Newtonsoft.Json.dll
 C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructLogic\bin\Debug\OrgStructModels.pdb
 C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructLogic\bin\Debug\OrgStructPersistenceJSON.pdb
 C:\Users\i7 8700K 5.0\source\repos\OrgStructSolution\OrgStructLogic\bin\Debug\Newtonsoft.Json.xml

@@ -38,6 +38,11 @@ namespace OrgStructModels.Persistence
         int SyncMaxDeferredChanges { set; get; }
 
         /// <summary>
+        /// Default name to use for new organization.
+        /// </summary>
+        string DefaultOrganizationName { set; get; }
+
+        /// <summary>
         /// In-Memory object tree
         /// </summary>
         OrganizationModel Organization { get; }

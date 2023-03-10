@@ -17,7 +17,8 @@ namespace OrgStructModels.Persistence
         string ObjectType { get; }
 
         /// <summary>
-        /// Set to true by the Persistable when a property of this Persistable has changed.
+        /// Set to true by this Persistable when a property of the Persistable has changed.
+        /// Set to false by Persistor upon writing this Persistable to persistent storage.
         /// </summary>
         bool IsDirty { get; }
 

@@ -4,6 +4,7 @@ using OrgStructModels.Metadata;
 using OrgStructModels.Persistence;
 using OrgStructPersistence;
 using System;
+using System.IO;
 
 namespace OrgStructLogic.Service
 {
@@ -41,74 +42,99 @@ namespace OrgStructLogic.Service
         {
             // setup configuration repository (currently completely static)
             Configuration = new ConfigurationRepository();
-
-            // setup persistence layer
-            PersistenceLayer = new PersistenceLayer()
+            if (Configuration != null)
             {
-                DataSource = Configuration.PersistenceDataSource,
-                SyncDelayMilliseconds = Configuration.PersistenceFlushDelayMilliseconds,
-                SyncMaxDeferredChanges = Configuration.PersistenceSyncMaxDeferredChanges  
-            };
-            
-            if (PersistenceLayer != null)
-            {
-                // hook persistence log event
-                PersistenceLayer.LogEvent += SubsystemLogEvent;
+                Configuration.LogEvent += SubsystemLogEvent;
 
-                Log("Persistence layer (" + PersistenceLayer.GetType().Assembly.GetName().Name + ") initialized.");
+                Log("Configuration repository initialized.");
 
-                // setup object lock manager
-                ObjectLocks = new ObjectLockManager();
-                if (ObjectLocks != null)
+                // service configuration file exists?
+                if (File.Exists("OrgStructLogic.Config.json"))
                 {
-                    // hook lock manager events
-                    ObjectLocks.LogEvent += SubsystemLogEvent;
+                    // yes, load
+                    Configuration.Load("OrgStructLogic.Config.json");
+                }
+                else
+                {
+                    // no, create default
+                    Configuration.Save("OrgStructLogic.Config.json");
+                }
 
-                    Log("Object lock manager initialized.");
+                // setup persistence layer
+                PersistenceLayer = new PersistenceLayer()
+                {
+                    DataSource = Configuration.Persistence.DataSource,
+                    SyncDelayMilliseconds = Configuration.Persistence.SyncDelayMilliseconds,
+                    SyncMaxDeferredChanges = Configuration.Persistence.SyncMaxDeferredChanges
+                };
 
-                    // track deletes
-                    UnUpdateables = new UnUpdateableChangesTracker();
-                    if (UnUpdateables != null)
+                if (PersistenceLayer != null)
+                {
+                    // configure default org name on persistence layer
+                    PersistenceLayer.DefaultOrganizationName = Configuration.Persistence.DefaultOrganizationName;
+
+                    // hook persistence layer log event
+                    PersistenceLayer.LogEvent += SubsystemLogEvent;
+
+                    Log("Persistence layer (" + PersistenceLayer.GetType().Assembly.GetName().Name + ") initialized.");
+
+                    // setup object lock manager
+                    ObjectLocks = new ObjectLockManager();
+                    if (ObjectLocks != null)
                     {
-                        Log("UnUpdateables tracker initialized.");
+                        // hook lock manager events
+                        ObjectLocks.LogEvent += SubsystemLogEvent;
 
-                        try
+                        Log("Object lock manager initialized.");
+
+                        // track deletes
+                        UnUpdateables = new UnUpdateableChangesTracker();
+                        if (UnUpdateables != null)
                         {
-                            // connect persistence layer
-                            PersistenceLayer.Connect();
+                            Log("UnUpdateables tracker initialized.");
 
-                            // dump persistence layer stats to log
-                            PersistenceLayer.LogStats();
+                            try
+                            {
+                                // connect persistence layer
+                                PersistenceLayer.Connect();
 
-                            // start deletion tracker
-                            UnUpdateables.Start();
+                                // dump persistence layer stats to log
+                                PersistenceLayer.LogStats();
 
-                            // facilities are running
-                            Running = true;
+                                // start deletion tracker
+                                UnUpdateables.Start();
 
-                            Log("Facilities started.");
+                                // facilities are running
+                                Running = true;
 
-                            return;
+                                Log("Facilities started.");
 
+                                return;
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Log("Exception (" + ex.Message + ") while trying to connect to persistence data source (" + PersistenceLayer.DataSource + "). Aborting.");
+                            }
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            Log("Exception (" + ex.Message + ") while trying to connect to persistence data source (" + PersistenceLayer.DataSource + "). Aborting.");
+                            Log("Failed to create unupdateables tracker instance. Aborting start.");
                         }
                     }
                     else
                     {
-                        Log("Failed to create unupdateables tracker instance. Aborting start.");
+                        Log("Failed to create object lock manager instance. Aborting start.");
                     }
                 }
                 else
                 {
-                    Log("Failed to create object lock manager instance. Aborting start.");
+                    Log("Failed to create persistence layer instance. Aborting start.");
                 }
             }
             else
             {
-                Log("Failed to create persistence layer instance. Aborting start.");
+                Log("Failed to create configuration repository instance. Aborting start.");
             }
 
             // facilities are not running
@@ -129,6 +155,7 @@ namespace OrgStructLogic.Service
             // unhook log events
             PersistenceLayer.LogEvent -= SubsystemLogEvent;
             ObjectLocks.LogEvent -= SubsystemLogEvent;
+            Configuration.LogEvent -= SubsystemLogEvent;
 
             // drop references            
             PersistenceLayer = null;

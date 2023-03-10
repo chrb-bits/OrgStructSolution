@@ -414,24 +414,9 @@
           ],
           "directReports": [],
           "changedAtUTC": "2023-03-07T15:26:07.2432363Z"
-        },
-        {
-          "$id": "a361207c-1ebe-45f3-8f92-c4ce3c5ab745",
-          "objectID": "a361207c-1ebe-45f3-8f92-c4ce3c5ab745",
-          "objectType": "OrgStructModels.Persistables.PositionModel",
-          "person": {
-            "$ref": "0133c859-4aef-4a8f-b898-f82f45774c74"
-          },
-          "roles": [
-            {
-              "$ref": "0ed809d8-be7a-4bbc-b370-f055e033d563"
-            }
-          ],
-          "directReports": [],
-          "changedAtUTC": "2023-03-09T21:37:46.0535026Z"
         }
       ],
-      "changedAtUTC": "2023-03-09T21:37:46.0535026Z"
+      "changedAtUTC": "2023-03-10T02:14:59.4400158Z"
     },
     {
       "$id": "e818e407-9c05-4525-ba02-cb14fdffddd5",
@@ -525,5 +510,5 @@
       "changedAtUTC": "2023-03-07T00:23:28.3542522Z"
     }
   ],
-  "changedAtUTC": "2023-03-09T21:37:46.0535026Z"
+  "changedAtUTC": "2023-03-10T02:14:59.4400158Z"
 }

@@ -155,7 +155,7 @@ namespace OrgStructModels.Persistables
         }
 
         /// <summary>
-        /// Set this Persistable's IsDirty flag.
+        /// Internal: Set this Persistable's IsDirty flag.
         /// </summary>
         /// <param name="setting">Value to set the flag to.</param>
         void IPersistablePersistorOperations.SetIsDirty(bool setting)
@@ -164,7 +164,7 @@ namespace OrgStructModels.Persistables
         }
 
         /// <summary>
-        /// Set this Persistabe's IsPersistent flag.
+        /// Internal: Set this Persistabe's IsPersistent flag.
         /// </summary>
         /// <param name="setting">Value to set the flag to.</param>
         void IPersistablePersistorOperations.SetIsPersistent(bool setting)

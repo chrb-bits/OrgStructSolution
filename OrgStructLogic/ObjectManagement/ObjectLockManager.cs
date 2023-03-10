@@ -85,7 +85,7 @@ namespace OrgStructLogic.ObjectManagement
                     TimeSpan lockDuration = DateTime.UtcNow.Subtract(existingLock.LockAcquiredAtUTC);
                     
                     // lock expired?
-                    if (lockDuration.TotalSeconds > Facilities.Configuration.LockTimeout.TotalSeconds)
+                    if (lockDuration.TotalSeconds > Facilities.Configuration.Service.ObjectLockTimeout.TotalSeconds)
                     {
                         // existing lock timed out - acquire for current session
                         existingLock.Acquire(sessionID, objectID);
@@ -195,7 +195,7 @@ namespace OrgStructLogic.ObjectManagement
                 TimeSpan lockDuration = DateTime.UtcNow.Subtract(existingLock.LockAcquiredAtUTC);
 
                 // expired?
-                if (lockDuration.TotalSeconds > Facilities.Configuration.LockTimeout.TotalSeconds)
+                if (lockDuration.TotalSeconds > Facilities.Configuration.Service.ObjectLockTimeout.TotalSeconds)
                 {
                     // yup, add to purge list
                     expiredLocks.Add(existingLock);

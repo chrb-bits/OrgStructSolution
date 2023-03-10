@@ -3,11 +3,8 @@ using OrgStructModels.Persistables;
 using OrgStructModels.Persistence;
 using OrgStructPersistence.Persistors;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Timers;
 
 
@@ -100,6 +97,8 @@ namespace OrgStructPersistence
         // DataSource is path to JSON persistence file
         public string DataSource { set; get; }
 
+        public string DefaultOrganizationName { set; get; }
+
         public int SyncDelayMilliseconds { set; get; }
 
         public int SyncMaxDeferredChanges { set; get; }
@@ -141,7 +140,9 @@ namespace OrgStructPersistence
                 
                 // create persistence filestream
                 PersistenceFileStream = File.Open(PersistenceFilePath, FileMode.Create, FileAccess.ReadWrite, FileShare.Read);
-                
+
+                organization.Name = DefaultOrganizationName;
+
                 // write organization to newly created persistence file
                 orgPersistor.Write(organization);
             }

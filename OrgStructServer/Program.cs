@@ -19,8 +19,8 @@ namespace OrgStructServerOWINAPI
             if (Facilities.Running)
             {
                 // Start OWIN host 
-                Log("Starting OWIN WebAPI host at (" + Facilities.Configuration.ServerURL + ")...");
-                using (WebApp.Start<Startup>(url: Facilities.Configuration.ServerURL))
+                Log("Starting OWIN WebAPI host at (" + Facilities.Configuration.Service.ServiceURL + ")...");
+                using (WebApp.Start<Startup>(url: Facilities.Configuration.Service.ServiceURL))
                 {
                     //Log("Running dev stuff...");
                     //Dev2();
